@@ -9,24 +9,19 @@
 
     <form method="POST" action="/create_password">
         <label for="length">Password Length:</label>
-        <input type="number" name="length" id="length" min="1" value="8">
+        <input type="number" name="length" id="length" min="1" value="8"><br><br>
 
-        <br><br>
         <label>
-            <input type="checkbox" name="use_upper" checked>
-            Include Uppercase (A-Z)
+            <input type="checkbox" name="use_upper" checked> Include Uppercase
         </label><br>
         <label>
-            <input type="checkbox" name="use_lower" checked>
-            Include Lowercase (a-z)
+            <input type="checkbox" name="use_lower" checked> Include Lowercase
         </label><br>
         <label>
-            <input type="checkbox" name="use_digits" checked>
-            Include Digits (0-9)
+            <input type="checkbox" name="use_digits" checked> Include Digits
         </label><br>
         <label>
-            <input type="checkbox" name="use_punct" checked>
-            Include Punctuation
+            <input type="checkbox" name="use_punct" checked> Include Punctuation
         </label><br><br>
 
         <button type="submit">Generate</button>
@@ -35,22 +30,8 @@
     {% if generated_password %}
         <h2>Your New Password:</h2>
         <p><strong>{{ generated_password }}</strong></p>
-        <!-- Copy button -->
-        <button onclick="copyPassword()">Copy to Clipboard</button>
     {% endif %}
 
-    <script>
-        function copyPassword() {
-            const password = "{{ generated_password|e }}";
-            navigator.clipboard.writeText(password)
-                .then(() => {
-                    alert("Password copied to clipboard!");
-                })
-                .catch(err => {
-                    alert("Failed to copy!");
-                    console.error(err);
-                });
-        }
-    </script>
+    <p><a href="/stats">View Stats</a></p>
 </body>
 </html>
